@@ -12,6 +12,7 @@ export default class cadastrarPage {
     cadastroSucesso = ".error-message";
     erroSenha = ".input-error";
     erroEmail = ".error-message";
+    alertaNome = ".input-error";
 
     typeNome(nome){
       cy.get(this.inputNome).type(nome);

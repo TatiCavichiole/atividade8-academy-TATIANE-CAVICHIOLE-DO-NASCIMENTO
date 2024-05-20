@@ -43,8 +43,22 @@ When('confirmar o registro', function () {
 When('informar uma senha {string}', function (senha) {
   paginaCadastro.typeSenha(senha);
 });
+
 When('informar o email {string}', function (email) {
   paginaCadastro.typeEmail(email);
+});
+
+When('informar o email ja resgistrado', function (email) {
+  cy.intercept(
+    'POST',
+    'https://raromdb-3c39614e42d4.herokuapp.com/api/users',
+    {
+      statusCode: 409,
+      body: {
+        error: 'Conflict',
+      },
+    }).as('postUser');
+  paginaCadastro.typeEmail(faker.internet.email());
 });
 
 Then('irei visualizar erro no registro de senha {string}', function (mensagem) {
@@ -53,6 +67,14 @@ Then('irei visualizar erro no registro de senha {string}', function (mensagem) {
 
 Then('irei visualizar erro no registro de email {string}', function (mensagem) {
   cy.get(paginaCadastro.erroEmail).contains(mensagem);
+});
+
+Then('irei visualizar a mensagem de falha no cadastro {string}', function () {
+  cy.get(paginaCadastro.erroEmail).contains("E-mail já cadastrado. Utilize outro e-mail");
+});
+
+Then('irei visualizar a mensagem de alerta {string}', function () {
+  cy.get(paginaCadastro.alertaNome).contains("Informe o nome");
 });
 
 Then('serei registrado com sucesso', function () {
