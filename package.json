@@ -8,13 +8,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/support/steps/[filepart].step.js"
+  },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
-    "@faker-js/faker": "^8.4.1",
-    "cypress": "^13.9.0"
+    "cypress": "^13.9.0",
+    "faker": "^6.6.6"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "mocha": "^10.4.0"
   },
   "description": ""
