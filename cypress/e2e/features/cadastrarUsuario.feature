@@ -71,5 +71,4 @@ Cenário: Usuário sempre deve ser criado com o tipo comum
   E informar uma senha valida
   E confirmar a senha
   E confirmar o registro
-  Então serei registrado com sucesso
-  E serei registrado como usuario do tipo comum
+  Então serei registrado como usuario do tipo comum

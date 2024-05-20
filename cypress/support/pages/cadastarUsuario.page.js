@@ -1,5 +1,7 @@
 export default class cadastrarPage {
     novoRegistro = '[href= "/register"]';
+    perfilUsuario = '[href= "/profile"]';
+    gerenciarConta = '[href= "/account"]';
     buttonCadastrar = ".account-save-button";
     buttonOkCadastro = ".modal-actions > button"
 

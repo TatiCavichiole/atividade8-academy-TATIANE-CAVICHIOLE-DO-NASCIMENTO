@@ -23,3 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// import { faker } from "@faker-js/faker";
+// const namecommands = faker.person.Name();
+// const emailcommands = faker.internet.email(); 
+
+// Cypress.Commands.add("usuarioCommands", function () {
+//     return cy.request({
+//       method: "POST",
+//       url: "https://rarocrud-80bf38b38f1f.herokuapp.com/api/v1/users",
+//       body: {
+//         name: namecommands,
+//         email: emailcommands,
+//       },
+//     });
+//   });
+// Cypress.Commands.add('deletarUsuario', function (id) {
+//     cy.request('DELETE', 'users/' + id);
+//   });
+
+//   Cypress.Commands.add('deletarUsuario', function (id) {
+//     cy.request('DELETE', 'users/' + id);
+//   });

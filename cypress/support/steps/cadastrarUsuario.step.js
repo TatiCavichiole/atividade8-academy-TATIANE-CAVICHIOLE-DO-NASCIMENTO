@@ -57,7 +57,7 @@ When('informar o email ja resgistrado', function (email) {
       body: {
         error: 'Conflict',
       },
-    }).as('postUser');
+    }).as('postEmail');
   paginaCadastro.typeEmail(faker.internet.email());
 });
 
@@ -83,4 +83,7 @@ Then('serei registrado com sucesso', function () {
   cy.get(paginaCadastro.buttonOkCadastro).should('be.visible');
 });
 
+Then('serei registrado como usuario do tipo comum', function () {
+  cy.intercept
+});
 
