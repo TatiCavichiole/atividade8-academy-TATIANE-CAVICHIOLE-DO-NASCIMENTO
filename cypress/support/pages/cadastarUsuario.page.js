@@ -15,6 +15,7 @@ export default class cadastrarPage {
     erroSenha = ".input-error";
     erroEmail = ".error-message";
     alertaNome = ".input-error";
+    tipoUsuario = "input.profile-input[name='type']"
 
     typeNome(nome){
       cy.get(this.inputNome).type(nome);
@@ -35,6 +36,12 @@ export default class cadastrarPage {
       cy.get(this.buttonCadastrar).click();
     }
 
+    clickPerfil(){
+      cy.get(this.perfilUsuario).click();
+    }
 
+    clickGerenciar(){
+      cy.get(this.gerenciarConta).click();
+    }
   }
   

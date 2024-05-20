@@ -14,6 +14,7 @@ Cenário: Registro de novo usuário com credenciais validas
   E confirmar a senha
   E confirmar o registro
   Então serei registrado com sucesso
+  E serei registrado como usuario do tipo comum
 
 Cenário: Não deve ser possivel cadastrar um usuario com senha invalida
   Quando eu informar um novo nome valido
@@ -65,10 +66,10 @@ Cenário: Nao deve ser possivel cadastrar usuario sem preencher o nome
   E confirmar o registro
   Então irei visualizar a mensagem de alerta "Informe o nome"
 
-Cenário: Usuário sempre deve ser criado com o tipo comum
-  Quando eu informar um novo nome valido
-  E informar o email valido
-  E informar uma senha valida
-  E confirmar a senha
-  E confirmar o registro
-  Então serei registrado como usuario do tipo comum
+# Cenário: Usuário sempre deve ser criado com o tipo comum
+#   Quando eu informar um novo nome valido
+#   E informar o email valido
+#   E informar uma senha valida
+#   E confirmar a senha
+#   E confirmar o registro
+#   Então serei registrado como usuario do tipo comum

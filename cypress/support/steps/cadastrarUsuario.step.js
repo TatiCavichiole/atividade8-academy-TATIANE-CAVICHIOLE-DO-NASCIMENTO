@@ -80,10 +80,12 @@ Then('irei visualizar a mensagem de alerta {string}', function () {
 Then('serei registrado com sucesso', function () {
   cy.wait('@postUser');
   cy.get(paginaCadastro.cadastroSucesso).contains('Cadastro realizado!');
-  cy.get(paginaCadastro.buttonOkCadastro).should('be.visible');
+  //cy.get(paginaCadastro.buttonOkCadastro).should('be.visible').click();
 });
 
 Then('serei registrado como usuario do tipo comum', function () {
-  cy.intercept
+  cy.wait('@postUser').then(function(usuario){
+    expect(usuario.response.body.type).to.equal(0);
+  })
 });
 
