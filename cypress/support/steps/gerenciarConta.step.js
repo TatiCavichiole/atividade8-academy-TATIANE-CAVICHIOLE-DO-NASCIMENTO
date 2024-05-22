@@ -42,10 +42,14 @@ import {Given, When, Then, Before, After,} from "@badeball/cypress-cucumber-prep
     });
 
   When('informar uma senha {string}', function (senha) {
-      paginaGerenciar.clickAlterarSenha(senha);
-      // cy.get(paginaGerenciar.inputSenha).clear().type(novaSenha);
-      
-      });
+      paginaGerenciar.clickAlterarSenha();
+     cy.get(paginaGerenciar.inputSenha).clear().type(senha);
+  
+    });
+  
+  When('confirmar a senha {string}', function (senha) {
+     cy.get(paginaGerenciar.inputConfirmSenha).clear().type(senha);
+    });
   
   When('confirmar a senha com os mesmos caracteres', function () {
         paginaGerenciar.clickConfirmarSenha();
@@ -64,7 +68,7 @@ import {Given, When, Then, Before, After,} from "@badeball/cypress-cucumber-prep
     cy.get(paginaGerenciar.inputNome).should("have.value", novoNome);
 });
 
-When("deve atualizar a senha",function () {
+  When("deve atualizar a senha",function () {
   cy.get(paginaGerenciar.cadastroSucesso).should("contain", "Sucesso");
   paginaGerenciar.clickOk();
   cy.wait(4000);
@@ -75,6 +79,10 @@ When("deve atualizar a senha",function () {
   Then("receberei mensagem de Sucesso {string}", function () {
     cy.get(paginaGerenciar.cadastroAtualizado).should(
       "contain", "Informações atualizadas!");
+  });
+
+  Then("irei visualizar erro no registro de senha {string}", function (mensagem) {
+    cy.get(paginaGerenciar.erroSenha).contains(mensagem);
   });
 
 

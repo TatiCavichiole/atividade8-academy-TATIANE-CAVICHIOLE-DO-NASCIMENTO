@@ -27,7 +27,7 @@ Exemplos:
 | 12345           | A senha deve ter pelo menos 6 dígitos.    |
 | 1               | A senha deve ter pelo menos 6 dígitos.    |
 | 123456789asdf   | A senha deve ter no máximo 12 dígitos.    |
-|                 | Informe a senha                           |
+
 
 Cenário: Não deve ser possivel cadastrar um usuario com confirmação de senha divergente
   Quando eu informar um novo nome valido
