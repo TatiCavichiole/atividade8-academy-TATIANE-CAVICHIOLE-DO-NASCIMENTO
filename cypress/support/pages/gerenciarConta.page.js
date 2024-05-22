@@ -52,6 +52,10 @@ export default class GerenciarPage {
         cy.get(this.buttonAlterarSenha).click();
       }
     
+    clickConfirmarSenha() {
+        cy.get(this.inputConfirmSenha).click();
+      }
+    
       clickSalvar() {
         cy.get(this.buttonSalvar).click();
       }

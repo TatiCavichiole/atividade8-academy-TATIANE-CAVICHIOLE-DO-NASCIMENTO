@@ -14,8 +14,8 @@ Cenário: Deve ser possivel alterar nome
   E acessar a funcionalidade gerenciar conta
   E informar um novo nome
   E salvar as alterações
-  Então deve atualizar o nome
-  E recberei mensagem de Sucesso "Informações atualizadas!"
+  Entao receberei mensagem de Sucesso "Informações atualizadas!"
+  E devera atualizar o nome
 
 Cenário: Deve ser possivel alterar senha
   Quando acessar o perfil do usuario
@@ -23,8 +23,8 @@ Cenário: Deve ser possivel alterar senha
   E informar uma nova senha
   E confirmar a senha com os mesmos caracteres
   E salvar as alterações
-  Então deve atualizar a senha
-  E recberei mensagem de Sucesso "Informações atualizadas!"
+  Então receberei mensagem de Sucesso "Informações atualizadas!"
+  E deve atualizar a senha
 
 Cenário: Não deve ser possivel atualizar a senha com formato de senha invalida
   Quando acessar o perfil do usuario

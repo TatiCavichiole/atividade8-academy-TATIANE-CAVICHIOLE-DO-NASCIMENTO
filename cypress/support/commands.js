@@ -29,7 +29,7 @@
 import { faker } from "@faker-js/faker";
 
 const nome = "testeraro"
-const email = faker.internet.email();
+
 const senha = "123456";
 let emailCriado;
 let  id;
@@ -40,7 +40,7 @@ Cypress.Commands.add("novoUsuario", function () {
       url: "https://raromdb-3c39614e42d4.herokuapp.com/api/users",
       body: {
         name: nome,
-        email: email,
+        email: faker.internet.email(),
         password: senha
       },
     })
@@ -67,20 +67,20 @@ Cypress.Commands.add('deletarUsuario', function (id) {
         method: "POST",
         url: "https://raromdb-3c39614e42d4.herokuapp.com/api/auth/login",
         body: {
-          email: email,
+          email: emailCriado,
           password: senha,
         },
       })
       .then(function(response){
           const token = response.body.accessToken;
-        //   cy.request({
-        //     method: "PATCH",
-        //     url: "https://raromdb-3c39614e42d4.herokuapp.com/api/users/admin",
-        //     headers: {
-        //       Authorization: "Bearer " + token,
-        //     },
-        //   })
-        // .then(function() {
+          cy.request({
+            method: "PATCH",
+            url: "https://raromdb-3c39614e42d4.herokuapp.com/api/users/admin",
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          })
+        .then(function() {
   cy.request({
           method: "DELETE",
           url: "https://raromdb-3c39614e42d4.herokuapp.com/api/users/" + id,
@@ -93,4 +93,4 @@ Cypress.Commands.add('deletarUsuario', function (id) {
         });
       });
     });
- // });
+  });

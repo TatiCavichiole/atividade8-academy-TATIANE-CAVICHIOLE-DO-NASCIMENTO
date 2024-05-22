@@ -3,7 +3,8 @@ import {Given, When, Then, Before, After,} from "@badeball/cypress-cucumber-prep
   import GerenciarPage from "../pages/gerenciarConta.page";
   const paginaGerenciar = new GerenciarPage();
   const nome = "testeraro"
- const nomeAtualizado = nome + "123";
+  const novoNome = "testeraro123"
+  const novaSenha = "teste123"
   const senha = "123456";
   
   Before( function () {
@@ -13,9 +14,9 @@ import {Given, When, Then, Before, After,} from "@badeball/cypress-cucumber-prep
    
 
   
-  After( function () {
-    cy.deletarUsuario();
-  });
+  // After( function () {
+  //   cy.deletarUsuario();
+  // });
   
   Given("que possuo usuario cadastrado e logado no sistema", function () {
     cy.get('@usuarioCriadoLogado');
@@ -31,24 +32,53 @@ import {Given, When, Then, Before, After,} from "@badeball/cypress-cucumber-prep
   });
 
   When('informar um novo nome', function () {
-    paginaGerenciar.typeNome(nomeAtualizado);
-    
-  });
+    cy.get(paginaGerenciar.inputNome).clear().type(novoNome);
+    })
 
+  When('informar uma nova senha', function () {
+    paginaGerenciar.clickAlterarSenha();
+    cy.get(paginaGerenciar.inputSenha).clear().type(novaSenha);
+    
+    });
+
+  When('informar uma senha {string}', function (senha) {
+      paginaGerenciar.clickAlterarSenha(senha);
+      // cy.get(paginaGerenciar.inputSenha).clear().type(novaSenha);
+      
+      });
+  
+  When('confirmar a senha com os mesmos caracteres', function () {
+        paginaGerenciar.clickConfirmarSenha();
+        cy.get(paginaGerenciar.inputConfirmSenha).type(novaSenha);
+        
+          })
+  
   When('salvar as alterações', function () {
     paginaGerenciar.clickSalvar();
   });
 
-  Then(
-    "deve atualizar o nome",
-    function () {
-      cy.get(paginaGerenciar.cadastroSucesso).should("contain", "Sucesso");
-      cy.get(paginaGerenciar.cadastroAtualizado).should(
-        "contain",
-        "Informações atualizadas!"
-      );
-     
-      paginaGerenciar.clickOk();
-      cy.get(paginaGerenciar.formularioUsuario).contains("nomeAtualizado");
-    }
-  );
+  When("devera atualizar o nome",function () {
+    cy.get(paginaGerenciar.cadastroSucesso).should("contain", "Sucesso");
+    paginaGerenciar.clickOk();
+    cy.wait(4000);
+    cy.get(paginaGerenciar.inputNome).should("have.value", novoNome);
+});
+
+When("deve atualizar a senha",function () {
+  cy.get(paginaGerenciar.cadastroSucesso).should("contain", "Sucesso");
+  paginaGerenciar.clickOk();
+  cy.wait(4000);
+  cy.get(paginaGerenciar.inputSenha).should("have.value", novaSenha);
+});
+  
+
+  Then("receberei mensagem de Sucesso {string}", function () {
+    cy.get(paginaGerenciar.cadastroAtualizado).should(
+      "contain", "Informações atualizadas!");
+  });
+
+
+ 
+ 
+
+  
