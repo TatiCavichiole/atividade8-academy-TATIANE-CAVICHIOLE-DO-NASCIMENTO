@@ -27,10 +27,12 @@
 // const namecommands = faker.person.Name();
 // const emailcommands = faker.internet.email(); 
 import { faker } from "@faker-js/faker";
+
 const nome = "testeraro"
 const email = faker.internet.email();
-const senha = 123456;
-let idUsuario = id;
+const senha = "123456";
+let emailCriado;
+let  id;
 Cypress.Commands.add("novoUsuario", function () {
 
     return cy.request({
@@ -42,25 +44,26 @@ Cypress.Commands.add("novoUsuario", function () {
         password: senha
       },
     })
-      .as("usuarioRegistrado")
-      .then((response) => {
-        id = response.body.id;
-        emailCadastrado = response.body.email;
-      });
-  });
+    .as("usuarioRegistrado")
+    .then(function(response){
+      id = response.body.id;
+      emailCriado = response.body.email;
+     
+    });
+});
 
 Cypress.Commands.add("logarUsuario", function () {
   cy.visit("/login");
     cy.get("@usuarioRegistrado").then(function (usuario) {
-      paginaGerenciar.typeEmail(emailCadastrado);
-      paginaGerenciar.typeSenha(senha);
-      paginaGerenciar.clickLogin();
-    });
+      cy.get('[name="email"]').type(emailCriado);
+      cy.get('[name="password"]').type(senha);
+      cy.get('.login-button').click();
+});
 });
 
-
 Cypress.Commands.add('deletarUsuario', function (id) {
-    cy.request({
+  cy.get("@usuarioRegistrado").then(function(usuario){  
+  cy.request({
         method: "POST",
         url: "https://raromdb-3c39614e42d4.herokuapp.com/api/auth/login",
         body: {
@@ -68,25 +71,26 @@ Cypress.Commands.add('deletarUsuario', function (id) {
           password: senha,
         },
       })
-        .as("logarUsuario")
-        .then((response) => {
-          token = response.body.accessToken;
-          cy.request({
-            method: "PATCH",
-            url: "https://raromdb-3c39614e42d4.herokuapp.com/api/users/admin",
-            headers: {
-              Authorization: "Bearer " + token,
+      .then(function(response){
+          const token = response.body.accessToken;
+        //   cy.request({
+        //     method: "PATCH",
+        //     url: "https://raromdb-3c39614e42d4.herokuapp.com/api/users/admin",
+        //     headers: {
+        //       Authorization: "Bearer " + token,
+        //     },
+        //   })
+        // .then(function() {
+  cy.request({
+          method: "DELETE",
+          url: "https://raromdb-3c39614e42d4.herokuapp.com/api/users/" + id,
+          headers: {
+          Authorization: "Bearer " + token,
             },
-          }).as("promoverAdmin");
-        })
-        .then(() => {
-          cy.request({
-            method: "DELETE",
-            url: "https://raromdb-3c39614e42d4.herokuapp.com/api/users/" + id,
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }).as("deletarUsuario");
+          }).then(function(deleteResponse) {
+            expect(deleteResponse.status).to.equal(200);
+          });
         });
-
+      });
     });
+ // });

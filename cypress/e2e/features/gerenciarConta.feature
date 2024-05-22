@@ -4,8 +4,10 @@ Funcionalidade: Gerenciar conta de Usuario
     Desejo gerenciar minhas informaçoes de usuario
     Para atualizar minhas informacoes
 
+
 Contexto:Deve estar logado no site
   Dado que possuo usuario cadastrado e logado no sistema
+
 
 Cenário: Deve ser possivel alterar nome
   Quando acessar o perfil do usuario

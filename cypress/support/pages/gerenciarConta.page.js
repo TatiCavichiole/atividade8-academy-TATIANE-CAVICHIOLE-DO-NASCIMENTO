@@ -8,14 +8,18 @@ export default class GerenciarPage {
     inputSenha = 'input.profile-input[name="password"]';
     inputConfirmSenha = 'input.profile-input[name="confirmPassword"]';
 
-    cadastroSucesso = ".error-message";
+    cadastroSucesso = ".modal-body > h3";
+    cadastroAtualizado = ".error-message";
     erroSenha = ".input-error";
     erroEmail = ".error-message";
     alertaNome = ".input-error";
     tipoUsuario = "input.profile-input[name='type']"
+    formularioUsuario = ".account-container"
 
     buttonAlterarSenha = ".account-password-button";
     buttonLogin = ".login-button";
+    buttonSalvar = ".account-save-button";
+    buttonOk = ".modal-actions > button";
 
     typeNome(nome){
       cy.get(this.inputNome).type(nome);
@@ -48,5 +52,12 @@ export default class GerenciarPage {
         cy.get(this.buttonAlterarSenha).click();
       }
     
+      clickSalvar() {
+        cy.get(this.buttonSalvar).click();
+      }
+
+      clickOk() {
+        cy.get(this.buttonOk).click();
+      }
 
   }
