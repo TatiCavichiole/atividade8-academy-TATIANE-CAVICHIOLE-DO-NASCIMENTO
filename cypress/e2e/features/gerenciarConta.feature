@@ -5,7 +5,7 @@ Funcionalidade: Gerenciar conta de Usuario
     Para atualizar minhas informacoes
 
 Contexto:Deve estar logado no site
-  Dado que logei o usuario
+  Dado que possuo usuario cadastrado e logado no sistema
 
 Cenário: Deve ser possivel alterar nome
   Quando acessar o perfil do usuario
