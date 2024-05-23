@@ -56,12 +56,20 @@ export default class GerenciarPage {
         cy.get(this.inputConfirmSenha).click();
       }
     
-      clickSalvar() {
+    clickSalvar() {
         cy.get(this.buttonSalvar).click();
       }
 
-      clickOk() {
+    clickOk() {
         cy.get(this.buttonOk).click();
+      }
+    
+    clickImputEmail(){
+        cy.get(this.inputEmail).click();
+      }
+
+    clickTipoUsuario(){
+        cy.get(this.tipoUsuario).click();
       }
 
   }

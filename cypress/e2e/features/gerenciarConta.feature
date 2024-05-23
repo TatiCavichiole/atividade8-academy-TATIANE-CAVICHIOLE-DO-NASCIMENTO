@@ -20,6 +20,7 @@ Cenário: Deve ser possivel alterar nome
 Cenário: Deve ser possivel alterar senha
   Quando acessar o perfil do usuario
   E acessar a funcionalidade gerenciar conta
+  E acessar a opçao de alterar senha
   E informar uma nova senha
   E confirmar a senha com os mesmos caracteres
   E salvar as alterações
@@ -44,13 +45,13 @@ Cenário: Não deve ser possivel atualizar a senha com confirmação de senha di
   Quando acessar o perfil do usuario
   E acessar a funcionalidade gerenciar conta
   E acessar a opçao de alterar senha
-  E informar uma senha valida
+  E informar uma nova senha
   E confirmar a senha com caracteres diferentes
-  E confirmar o registro
+  E salvar as alterações
   Então irei visualizar erro no registro de senha "As senhas devem ser iguais."
 
-Cenário: Não deve ser possivel atualizar o email
+Cenário: Não deve ser possivel atualizar o email e modificar o tipo de usuario
   Quando acessar o perfil do usuario
   E acessar a funcionalidade gerenciar conta
-  E tentar alterar o email
-  Então o campo de email devera estar desabilitado.
+  E tentar alterar o email e tipo de usuario
+  Então os campos de email e tipo deverao estar desabilitados.

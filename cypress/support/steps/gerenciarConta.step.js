@@ -36,9 +36,9 @@ import {Given, When, Then, Before, After,} from "@badeball/cypress-cucumber-prep
     })
 
   When('informar uma nova senha', function () {
-    paginaGerenciar.clickAlterarSenha();
-    cy.get(paginaGerenciar.inputSenha).clear().type(novaSenha);
     
+    cy.get(paginaGerenciar.inputSenha).clear().type(novaSenha);
+     
     });
 
   When('informar uma senha {string}', function (senha) {
@@ -52,10 +52,15 @@ import {Given, When, Then, Before, After,} from "@badeball/cypress-cucumber-prep
     });
   
   When('confirmar a senha com os mesmos caracteres', function () {
-        paginaGerenciar.clickConfirmarSenha();
-        cy.get(paginaGerenciar.inputConfirmSenha).type(novaSenha);
+    paginaGerenciar.clickConfirmarSenha();
+    cy.get(paginaGerenciar.inputConfirmSenha).type(novaSenha);
         
-          })
+    })
+    
+  When('confirmar a senha com caracteres diferentes', function () {
+    paginaGerenciar.typeConfirmSenha(senha + "asdf");
+    });
+          
   
   When('salvar as alterações', function () {
     paginaGerenciar.clickSalvar();
@@ -75,6 +80,19 @@ import {Given, When, Then, Before, After,} from "@badeball/cypress-cucumber-prep
   cy.get(paginaGerenciar.inputSenha).should("have.value", novaSenha);
 });
   
+  When('acessar a opçao de alterar senha', function () {
+  paginaGerenciar.clickAlterarSenha();
+});
+  
+  When('tentar alterar o email e tipo de usuario', function () {
+  paginaGerenciar.clickImputEmail();
+  paginaGerenciar.clickTipoUsuario();
+});
+
+  hen("os campos de email e tipo deverao estar desabilitados.", function () {
+  cy.get(paginaGerenciar.inputEmail).should("be.disabled");
+  cy.get(paginaGerenciar.labelTipoUser).should("be.disabled");
+});
 
   Then("receberei mensagem de Sucesso {string}", function () {
     cy.get(paginaGerenciar.cadastroAtualizado).should(
