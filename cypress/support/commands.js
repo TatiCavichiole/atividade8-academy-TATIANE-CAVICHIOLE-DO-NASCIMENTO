@@ -58,8 +58,9 @@ Cypress.Commands.add("logarUsuario", function () {
       cy.get('[name="email"]').type(emailCriado);
       cy.get('[name="password"]').type(senha);
       cy.get('.login-button').click();
+})
 });
-});
+
 
 Cypress.Commands.add('deletarUsuario', function (id) {
   cy.get("@usuarioRegistrado").then(function(usuario){  

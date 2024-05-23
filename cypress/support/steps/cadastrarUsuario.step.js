@@ -1,7 +1,9 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import cadastrarPage from "../pages/cadastarUsuario.page";
 import { faker } from '@faker-js/faker';
+import GerenciarPage from "../pages/gerenciarConta.page";
 const paginaCadastro = new cadastrarPage();
+const paginaGerenciar = new GerenciarPage();
 const nome = "teste"
 const email = faker.internet.email();
 const senha = 123456;
@@ -61,6 +63,18 @@ When('informar o email ja resgistrado', function (email) {
   paginaCadastro.typeEmail(faker.internet.email());
 });
 
+When('acessar o perfil do usuario', function () {
+  cy.novoUsuario();
+  cy.logarUsuario().as("usuarioCriadoLogado");
+  cy.get('@usuarioCriadoLogado');
+  paginaGerenciar.clickPerfil();
+  
+});
+
+When("acessar a funcionalidade gerenciar conta", function () {
+  paginaCadastro.clickGerenciar();
+});
+
 Then('irei visualizar erro no registro de senha {string}', function (mensagem) {
   cy.get(paginaCadastro.erroSenha).contains(mensagem);
 });
@@ -83,9 +97,8 @@ Then('serei registrado com sucesso', function () {
   //cy.get(paginaCadastro.buttonOkCadastro).should('be.visible').click();
 });
 
-Then('serei registrado como usuario do tipo comum', function () {
-  cy.wait('@postUser').then(function(usuario){
-    expect(usuario.response.body.type).to.equal(0);
-  })
+Then('dever estar como usuario do tipo comum', function () {
+  cy.get(paginaCadastro.tipoUsuario).should("contain", "Comum");
 });
+  
 

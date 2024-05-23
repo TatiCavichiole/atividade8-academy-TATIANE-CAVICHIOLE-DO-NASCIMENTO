@@ -15,7 +15,8 @@ export default class cadastrarPage {
     erroSenha = ".input-error";
     erroEmail = ".error-message";
     alertaNome = ".input-error";
-    tipoUsuario = "input.profile-input[name='type']"
+    tipoUsuario = ":nth-child(3) > .profile-input"
+
 
     typeNome(nome){
       cy.get(this.inputNome).type(nome);

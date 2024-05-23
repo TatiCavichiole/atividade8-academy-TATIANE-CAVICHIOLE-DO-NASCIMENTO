@@ -14,7 +14,11 @@ Cenário: Registro de novo usuário com credenciais validas
   E confirmar a senha
   E confirmar o registro
   Então serei registrado com sucesso
-  E serei registrado como usuario do tipo comum
+  
+  Cenário: Novos usuarios devem ser do tipo comum
+  Quando acessar o perfil do usuario
+  E acessar a funcionalidade gerenciar conta
+  Então dever estar como usuario do tipo comum
 
 Esquema do Cenário: Não deve ser possivel cadastrar um usuario com senha invalida
   Quando eu informar um novo nome valido

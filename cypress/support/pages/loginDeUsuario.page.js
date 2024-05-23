@@ -2,11 +2,13 @@ export default class LoginPage {
     inputNome = 'input.profile-input[name="name"]';
     inputEmail = 'input.profile-input[name="email"]';
     inputSenha = 'input.profile-input[name="password"]';
+    perfilUsuario = '[href= "/profile"]';
       
     erroEmail = ".input-error";
-    falhaLogar = ".modal-body > h3";
-    usuarioInvalido = ".error-message";
-    tipoUsuario = "input.profile-input[name='type']"
+    falhaLogar = ".error-message";
+    erroSenha = ".input-error";
+    falhaAutenticar = ".modal-body > h3";
+    tipoUsuario = "input.profile-input[name='type']";
   
     buttonLogin = ".login-button";
     buttonOk = ".modal-actions > button";
