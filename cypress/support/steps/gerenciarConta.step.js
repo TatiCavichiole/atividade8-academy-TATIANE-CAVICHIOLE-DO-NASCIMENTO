@@ -84,12 +84,8 @@ import {Given, When, Then, Before, After,} from "@badeball/cypress-cucumber-prep
   paginaGerenciar.clickAlterarSenha();
 });
   
-  When('tentar alterar o email e tipo de usuario', function () {
-  paginaGerenciar.clickImputEmail();
-  paginaGerenciar.clickTipoUsuario();
-});
 
-  hen("os campos de email e tipo deverao estar desabilitados.", function () {
+  When("ao tentar alterar o email e tipo de usuario os campos deverao estar desabilitados", function () {
   cy.get(paginaGerenciar.inputEmail).should("be.disabled");
   cy.get(paginaGerenciar.labelTipoUser).should("be.disabled");
 });

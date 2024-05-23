@@ -16,7 +16,7 @@ Cenário: Registro de novo usuário com credenciais validas
   Então serei registrado com sucesso
   E serei registrado como usuario do tipo comum
 
-Cenário: Não deve ser possivel cadastrar um usuario com senha invalida
+Esquema do Cenário: Não deve ser possivel cadastrar um usuario com senha invalida
   Quando eu informar um novo nome valido
   E informar o email valido
   E informar uma senha "<senha>"
@@ -37,7 +37,7 @@ Cenário: Não deve ser possivel cadastrar um usuario com confirmação de senha
   E confirmar o registro
   Então irei visualizar erro no registro de senha "As senhas devem ser iguais."
 
-Cenário: Não deve ser possivel cadastrar um usuario com email invalido
+Esquema do Cenário: Não deve ser possivel cadastrar um usuario com email invalido
   Quando eu informar um novo nome valido
   E informar o email "<email>"
   E informar uma senha valida

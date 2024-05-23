@@ -27,7 +27,7 @@ Cenário: Deve ser possivel alterar senha
   Então receberei mensagem de Sucesso "Informações atualizadas!"
   E deve atualizar a senha
 
-Cenário: Não deve ser possivel atualizar a senha com formato de senha invalida
+Esquema do Cenário: Não deve ser possivel atualizar a senha com formato de senha invalida
   Quando acessar o perfil do usuario
   E acessar a funcionalidade gerenciar conta
   E informar uma senha "<senha>"
@@ -53,5 +53,4 @@ Cenário: Não deve ser possivel atualizar a senha com confirmação de senha di
 Cenário: Não deve ser possivel atualizar o email e modificar o tipo de usuario
   Quando acessar o perfil do usuario
   E acessar a funcionalidade gerenciar conta
-  E tentar alterar o email e tipo de usuario
-  Então os campos de email e tipo deverao estar desabilitados.
+  Então ao tentar alterar o email e tipo de usuario os campos deverao estar desabilitados
